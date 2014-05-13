@@ -1,0 +1,51 @@
+/* 
+  TODO: Seperate CSS into different files for development 
+  and then use build process to consolidated
+  and minify.
+*/
+
+body {
+  background-color: #EEE;
+  text-shadow: 1px 1px 1px #FFF;
+  color: #555;
+}
+
+#page-container {
+  margin-top: 20px;
+}
+
+#header {
+  text-align: center;
+}
+
+#title {
+  font-weight: bold;
+  font-size: 100px;
+  text-align: center;
+  font-style: italic;
+  text-shadow: 1px 1px 1px #FFF;
+  font-family: 'times';
+}
+
+#sub-title {
+  text-shadow: 1px 1px 1px #FFF;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+/*
+  Loading
+*/
+
+.loading-message {
+  margin-top: 30px;
+  text-align: center;  
+}
+
+@media only screen and (min-width: 35em) {
+  #page-container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
