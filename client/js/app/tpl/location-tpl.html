@@ -1,1 +1,8 @@
-<div>Location View</div>
+<div>
+  Location View
+  <% if (!location) { %>
+    <div>Finding location</div>
+  <% } else { %>
+    <div><%- location.longitude %></div>
+  <% } %>
+</div>
