@@ -13,7 +13,7 @@ define(function (require) {
     getPredictions: function () {
       var self = this;
 
-      $.get('/api/nextbus/stops/' + self.id + '/predictions')
+      $.get('/api/stops/' + self.id + '/predictions')
       .done(function (predictions) {
         self.set('predictions', predictions);
       });

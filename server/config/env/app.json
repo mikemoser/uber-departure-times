@@ -1,7 +1,11 @@
 {
   "default": {
     "port": 3000,
-    "db": "mongodb://127.0.0.1:27017/uber-departure"
+    "db": "mongodb://127.0.0.1:27017/uber-departure",
+    "maxDistance" : 0.01,
+    "search": {
+      "limit": 5
+    }
   },
   
   "test": {

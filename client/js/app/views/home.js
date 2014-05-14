@@ -3,20 +3,20 @@ define(function (require) {
   var Backbone        = require('backbone'),
       tpl             = require('text!tpl/home-tpl.html'),
       LocationView    = require('views/location'),
-      NextBusView     = require('views/nextbus');
+      SearchView      = require('views/search');
 
   return Backbone.View.extend({
     initialize: function () {
       this.template = _.template(tpl);
       this.locationView = new LocationView();
-      this.nextbusView = new NextBusView();
+      this.searchView = new SearchView();
     },
     render: function () {
       this.$el.empty().html(this.template());
 
       this.assign({
         '.location-view': this.locationView,
-        '.nextbus-view': this.nextbusView
+        '.search-view': this.searchView
       });
 
       return this;

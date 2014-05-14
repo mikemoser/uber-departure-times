@@ -1,8 +1,9 @@
 define(function (require) {
   var Backbone      = require('backbone'),
-      NextbusStop = require('models/nextbus-stop')
+      SearchResult  = require('models/search-result')
 
   return Backbone.Collection.extend({
-    model : NextbusStop     
+    url: '/api/search',
+    model: SearchResult    
   });
 });

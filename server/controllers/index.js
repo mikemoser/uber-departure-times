@@ -1,5 +1,6 @@
 'use strict'
 
 module.exports = {
-  Nextbus: require('./nextbus-controller')
+  Stops: require('./stops'),
+  Search: require('./search')
 }

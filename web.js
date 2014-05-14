@@ -3,7 +3,11 @@
 var config      = require('./server/config/env'),
     express     = require('express'),
     app         = express(),
+    mongoose    = require('mongoose'),
     Controllers = require('./server/controllers');
+
+// Connect to MongoDb
+mongoose.connect(config.app.db);
 
 // Client Routes
 app.get('/', function(req, res){
@@ -16,8 +20,8 @@ app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
 
 // API Routes
-app.get('/api/nextbus/search', Controllers.Nextbus.search)
-app.get('/api/nextbus/stops/:id/predictions', Controllers.Nextbus.predictions)
+app.get('/api/search', Controllers.Search.search)
+app.get('/api/stops/:id/predictions', Controllers.Stops.predictions)
 
 // Start web server
 var server = app.listen(config.app.port, function () {

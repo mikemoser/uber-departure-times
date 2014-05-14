@@ -1,7 +1,7 @@
 define(function (render) {
 
   var Backbone  = require('backbone')
-      tpl       = require('text!tpl/nextbus-stop-tpl.html');
+      tpl       = require('text!tpl/stop-tpl.html');
 
   return Backbone.View.extend({
     initialize: function () {
