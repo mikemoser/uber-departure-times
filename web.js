@@ -1,8 +1,9 @@
 'use strick'
 
-var config    = require('./server/config/env'),
-    express   = require('express'),
-    app       = express();
+var config      = require('./server/config/env'),
+    express     = require('express'),
+    app         = express(),
+    Controllers = require('./server/controllers');
 
 // Client Routes
 app.get('/', function(req, res){
@@ -13,6 +14,9 @@ app.get('/', function(req, res){
 app.use('/img', express.static(__dirname + '/client/img'));
 app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
+
+// API Routes
+app.get('/api/nextbus/search', Controllers.Nextbus.search)
 
 // Start web server
 var server = app.listen(config.app.port, function () {
