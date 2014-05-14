@@ -17,6 +17,7 @@ app.use('/js', express.static(__dirname + '/client/js'));
 
 // API Routes
 app.get('/api/nextbus/search', Controllers.Nextbus.search)
+app.get('/api/nextbus/stops/:id/predictions', Controllers.Nextbus.predictions)
 
 // Start web server
 var server = app.listen(config.app.port, function () {

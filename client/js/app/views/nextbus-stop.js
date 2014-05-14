@@ -6,6 +6,7 @@ define(function (render) {
   return Backbone.View.extend({
     initialize: function () {
       this.template = _.template(tpl);
+      this.model.on('change', this.render, this);
     },
     render: function () {
       this.$el.empty().html(this.template(this.model.attributes));

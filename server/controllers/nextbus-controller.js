@@ -29,3 +29,7 @@ module.exports.search = function (req, res) {
     }]      
   }]);
 }
+
+module.exports.predictions = function (req, res) {
+  res.json([1,2,3]);
+}
