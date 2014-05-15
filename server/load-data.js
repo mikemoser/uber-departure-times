@@ -3,12 +3,12 @@
 
   var mongoose       = require('mongoose'),
       config         = require('./config/env'),
-      NextbusService = require('./services/nextbus');
+      Services       = require('./services');
 
   mongoose.connect(config.app.db)
 
   console.log('Start loading data...');
-  NextbusService.loadData()
+  Services.Nextbus.loadData()
   .then(function () {
     console.log('Nextbus data loaded.');
     mongoose.disconnect();

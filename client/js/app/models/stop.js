@@ -12,8 +12,8 @@ define(function (require) {
     },
     getPredictions: function () {
       var self = this;
-
-      $.get('/api/stops/' + self.id + '/predictions')
+      
+      $.get('/api/stops/' + self.attributes._id + '/predictions')
       .done(function (predictions) {
         self.set('predictions', predictions);
       });

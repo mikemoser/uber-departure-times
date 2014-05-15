@@ -1,12 +1,30 @@
 'use strict'
 
-var Promise               = require('promise'),
-    mongoose              = require('mongoose'),
-    StopModel             = require('../models/stop'),
-    serviceUtil           = require('./util'),
-    util                  = require('util'),
-    routesUrlTemplate     = 'http://webservices.nextbus.com/service/publicXMLFeed?command=routeList&a=%s',
-    stopsUrlTemplate      = 'http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=%s&r=%s';
+var Promise                = require('promise'),
+    mongoose               = require('mongoose'),
+    Models                 = require('../models'),
+    serviceUtil            = require('./util'),
+    util                   = require('util'),
+    routesUrlTemplate      = 'http://webservices.nextbus.com/service/publicXMLFeed?command=routeList&a=%s',
+    stopsUrlTemplate       = 'http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=%s&r=%s',
+    predictionsUrlTemplate = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=%s&r=%s&s=%s&useShortTitles=true'
+
+
+module.exports.getPredictions = function (stop, direction) {
+  var url = util.format(predictionsUrlTemplate, stop.agencyExternalId, stop.routeExternalId, stop.externalId);
+  var predictions = [];
+  
+  return serviceUtil.requestXmlToJson(url)
+  .then(function (response) {
+    response.body.predictions.forEach(function (prediction) {
+      prediction.direction[0].prediction.forEach(function (prediction) {
+        predictions.push(prediction.$.minutes)
+      });
+    });
+
+    return predictions;
+  })
+}
 
 module.exports.loadData = function() {
   // TODO: Don't delete all data each time, do an upsert, we can really do something like this in PROD
@@ -24,12 +42,12 @@ module.exports.loadData = function() {
     merged = merged.concat.apply(merged, results)
 
     // Bulk insert stops
-    return StopModel.create(merged);
+    return Models.Stop.create(merged);
   });
 }
 
 function clearData() {
-  return Promise.denodeify(StopModel.remove.bind(StopModel))();  
+  return Promise.denodeify(Models.Stop.remove.bind(Models.Stop))();  
 }
 
 function getRoutes(agencyTag) {
@@ -66,13 +84,15 @@ function getStops(route) {
 
       // Map to Stop Model 
       stops.push({
-        externalId: stop.$.stopId,
+        externalId: stop.$.tag,
         name: stop.$.title,
         location: [parseFloat(stop.$.lon), parseFloat(stop.$.lat)],
         direction: direction ? direction : { name: 'End of line', description: 'End of line' }, //TODO: Is this really end of line?  They are missing directions for the last stops
 
         //Denormalized for search optimization
-        routeName: route.title
+        routeName: route.title,
+        routeExternalId: route.tag,
+        agencyExternalId: route.agencyTag
       })
     });
 

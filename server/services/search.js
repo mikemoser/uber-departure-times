@@ -1,11 +1,11 @@
 'use strict'
 
 var Promise   = require('promise'),
-    StopModel = require('../models/stop'),
+    Models    = require('../models'),
     config    = require('../config/env');
 
 module.exports.findNearByStops = function (longitude, latitude) {
-  var query = StopModel.aggregate([
+  var query = Models.Stop.aggregate([
     { 
       $geoNear: { 
         near: [
@@ -25,6 +25,7 @@ module.exports.findNearByStops = function (longitude, latitude) {
         }, 
         stops: { 
           $push: { 
+            _id: "$_id",
             externalId: "$externalId",
             name: "$name",
             direction: "$direction",
