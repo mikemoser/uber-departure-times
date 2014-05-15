@@ -11,7 +11,7 @@ var Promise                = require('promise'),
 
 
 module.exports.getPredictions = function (stop, direction) {
-  var url = util.format(predictionsUrlTemplate, stop.agencyExternalId, stop.routeExternalId, stop.externalId);
+  var url = util.format(predictionsUrlTemplate, stop.providerData.agencyTag, stop.providerData.routeTag, stop.providerData.stopTag);
   var predictions = [];
   
   return serviceUtil.requestXmlToJson(url)
@@ -84,15 +84,20 @@ function getStops(route) {
 
       // Map to Stop Model 
       stops.push({
-        externalId: stop.$.tag,
         name: stop.$.title,
         location: [parseFloat(stop.$.lon), parseFloat(stop.$.lat)],
-        direction: direction ? direction : { name: 'End of line', description: 'End of line' }, //TODO: Is this really end of line?  They are missing directions for the last stops
-
+        direction: direction ? direction : 'End of line',  // TODO: Need to research why some stop do not have a direction, seem to be last stop, so perhaps end of the line
+        
         //Denormalized for search optimization
         routeName: route.title,
-        routeExternalId: route.tag,
-        agencyExternalId: route.agencyTag
+
+        // Provider specific data so the base Stop model can be abstract
+        provider: 'nextbus',
+        providerData: {
+          agencyTag: route.agencyTag,
+          routeTag: route.tag,
+          stopTag: stop.$.tag,
+        }
       })
     });
 
@@ -103,15 +108,10 @@ function getStops(route) {
 function buildDirectionHash(directions) {
   var hash = {};
   directions.forEach(function (direction) {
-    var directionName = direction.$.name;
     var directionTitle = direction.$.title;
 
-    // Map to Stop Model Definition for Direction
     direction.stop.forEach(function (stop) {
-      hash[stop.$.tag] = {
-        name: directionName,
-        description: directionTitle
-      }
+      hash[stop.$.tag] = directionTitle;
     });
   });
 

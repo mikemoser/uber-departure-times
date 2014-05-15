@@ -26,7 +26,6 @@ module.exports.findNearByStops = function (longitude, latitude) {
         stops: { 
           $push: { 
             _id: "$_id",
-            externalId: "$externalId",
             name: "$name",
             direction: "$direction",
             dist: "$dist" 
@@ -41,8 +40,7 @@ module.exports.findNearByStops = function (longitude, latitude) {
         },
         directions: {
           $push: {
-            name: "$_id.direction.name",
-            description: "$_id.direction.description",
+            description: "$_id.direction",
             stops: "$stops"
           }
         }
