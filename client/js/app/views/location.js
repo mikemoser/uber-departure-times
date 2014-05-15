@@ -8,16 +8,22 @@ define(function (require) {
     initialize: function () {
       this.template = _.template(tpl);
       events.on('location.found', this.onLocationFound, this);
+      events.on('location.error', this.onLocationError, this);
     },
     render: function () {
       this.$el.empty().html(this.template({
-        location: this.location
+        location: this.location,
+        error: this.error
       }));
 
       return this;
     },
-    onLocationFound: function (location){
+    onLocationFound: function (location) {
       this.location = location;
+      this.render();
+    },
+    onLocationError: function (error) {
+      this.error = error;
       this.render();
     }
   });

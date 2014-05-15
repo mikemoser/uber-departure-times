@@ -1,5 +1,7 @@
 <div>
-  <% if (!location) { %>
+  <% if (error) { %>
+    <div>Error accessing your location</div>
+  <% } else if (!location) { %>
     <div>Requesting your location</div>
   <% } else { %>
     <div><%- location.longitude %></div>
