@@ -1,9 +1,12 @@
-<div>
-  <% if (error) { %>
-    <div>Error accessing your location</div>
-  <% } else if (!location) { %>
-    <div>Requesting your location</div>
-  <% } else { %>
-    <div><%- location.longitude %></div>
-  <% } %>
-</div>
+<% if (error) { %>
+  <div class="message">
+    Bummer.  We could not find your location and we need access for our service to work. Can you check your settings and make sure we have permission?
+  </div>
+<% } else if (!location) { %>
+  <div class="message">Requesting your location...</div>
+<% } else { %>
+  <div class="message">
+    <span class="location-icon glyphicon glyphicon-map-marker"></span>
+    <span>Found your location</span>
+  </div>
+<% } %>

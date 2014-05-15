@@ -15,9 +15,11 @@ app.get('/', function(req, res){
 });
 
 // Static Routes
+app.use('/fonts', express.static(__dirname + '/client/fonts'));
 app.use('/img', express.static(__dirname + '/client/img'));
 app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
+
 
 // API Routes
 app.get('/api/search', Controllers.Search.search)

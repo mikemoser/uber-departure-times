@@ -6,17 +6,21 @@ var Promise   = require('promise'),
 
 module.exports.findNearByStops = function (longitude, latitude) {
   var query = Models.Stop.aggregate([
+    // Find all stops near by
     { 
       $geoNear: { 
         near: [
           parseFloat(longitude), 
           parseFloat(latitude)
         ], 
-        distanceField: "dist.calculated", 
+        distanceField: "dist.calculated",
+        spherical: true, 
+        distanceMultiplier: 3963.192, // Convert dist.calculated to miles
         maxDistance: config.maxDistance,
         includeLocs: "dist.location" 
       }
     },
+    // Group by route name and direction first
     {
       $group: { 
         _id :  {
@@ -33,6 +37,15 @@ module.exports.findNearByStops = function (longitude, latitude) {
         } 
       }
     },
+    // Sort by direction so Inbound and Outbound are returned in same order
+    {
+      $sort: {
+        "_id.direction": 1
+      }
+    },
+    // Group again by just route  so we hve a list of nearby routes 
+    // the availabile directions (inbount/outbound) for each route 
+    // and this of stops ordered by closest to furthest away
     {
       $group: {
         _id: {
@@ -46,6 +59,7 @@ module.exports.findNearByStops = function (longitude, latitude) {
         }
       }
     },
+    // Clean up the search result output
     {
       $project: {
         _id: 0,
@@ -53,6 +67,8 @@ module.exports.findNearByStops = function (longitude, latitude) {
         directions: 1
       }
     },
+    // Ensure the routes with the closest stops are sorted first in the 
+    // over all list.  Grouping does not maintain order of grouped items
     {
       $sort: {
         "directions.stops.dist.calculated": 1

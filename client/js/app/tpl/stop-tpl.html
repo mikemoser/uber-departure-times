@@ -1,8 +1,17 @@
+<div><%- direction %></div>
 <div>
-  <span><%- direction %></span>
-  <span><%- name %></span>
-  <span><%- dist.calculated %></span>
-  <% if (predictions) { %>
-    <span><%- predictions %></span>
+  <span>Stop: <%- name %></span>
+  <span class="stop-distance">(<%- parseFloat(dist.calculated).toFixed(1) %> miles)</span>
+</div>
+<div class="stop-predictions-container clearfix">
+  <% if (predictions.length) { %>
+    <ul class="stop-predictions">
+      <% _.each(predictions, function (prediction) { %>
+        <li class="stop-prediction"><%- prediction %></li>
+      <% }) %>
+    </ul>
+    <span class="stop-predictions-text">minutes</span>
   <% } %>
 </div>
+
+

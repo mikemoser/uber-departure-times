@@ -2,7 +2,7 @@
 
 var Services = require('../services');
 
-module.exports.search = function (req, res) {
+module.exports.search = function (req, res, next) {
   // TODO: Verify input (e.g. req.query.latitude & longitude)
   // or support other type of filters
   Services.Search.findNearByStops(req.query.longitude, req.query.latitude)

@@ -4,6 +4,8 @@ define(function (render) {
       tpl       = require('text!tpl/stop-tpl.html');
 
   return Backbone.View.extend({
+    tagName: 'li',
+    className: 'stop-view',
     initialize: function () {
       this.template = _.template(tpl);
       this.model.on('change', this.render, this);

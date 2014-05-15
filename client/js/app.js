@@ -14,11 +14,14 @@ require.config({
     },
     'underscore': {
       exports: '_'
+    },
+    'bootstrap': {
+      deps: ['jquery']
     }
   }
 });
 
-require(['jquery', 'backbone', 'app/router', 'services/location'], function ($, Backbone, Router, locationService) {
+require(['jquery', 'backbone', 'bootstrap', 'app/router', 'services/location'], function ($, Backbone, bootstrap, Router, locationService) {
   var router = new Router();
   Backbone.history.start();
 

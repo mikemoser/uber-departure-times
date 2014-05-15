@@ -16,9 +16,11 @@ define(function (require) {
     render: function () {
       this.$el.empty().html(this.template());
 
+      var $searchResults = this.$('.search-results');
+
       // Add subview for each result
       this.searchResults.each(function (result) {
-        this.$el.append(new SearchResultView({ model: result }).render().el)
+        $searchResults.append(new SearchResultView({ model: result }).render().el)
       }, this);
 
       return this;

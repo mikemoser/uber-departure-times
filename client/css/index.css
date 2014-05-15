@@ -10,42 +10,172 @@ body {
   color: #555;
 }
 
-#page-container {
-  margin-top: 20px;
+.round {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
-#header {
+h1 {
+  font-size: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.message {
+  padding: 10px;
+  text-align: center;  
+  text-transform: uppercase;
+}
+
+.page-container {
+  margin: 30px 10px 10px 10px;
+}
+
+.header {
   text-align: center;
 }
 
-#title {
+.title {
   font-weight: bold;
-  font-size: 100px;
   text-align: center;
   font-style: italic;
   text-shadow: 1px 1px 1px #FFF;
   font-family: 'times';
+  line-height: 80px;
 }
 
-#sub-title {
-  text-shadow: 1px 1px 1px #FFF;
-  font-size: 20px;
+.sub-title {
   margin-top: 5px;
+  text-shadow: 1px 1px 1px #FFF;
+  font-weight: normal;
 }
 
 /*
   Loading
 */
 
-.loading-message {
-  margin-top: 30px;
-  text-align: center;  
+
+/*
+  Location
+*/
+
+.location-icon {
+  color: green;
+}
+
+/*
+  Search
+*/
+
+.search-results{
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+/*
+  Search Result
+*/
+
+.search-result-container {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: solid 1px #CCC; 
+  background-color: #FFF;
+}
+
+.route-name {
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.stops {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+/*
+  Stop
+*/
+
+.stop-view {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #CCC;
+}
+
+.stop-view:last-child {
+  border-bottom: 0;
+}
+
+.stop-distance {
+  font-size: 12px;
+  color: #888;
+}
+
+.stop-predictions-container {
+  min-height: 16px;
+}
+
+.stop-predictions {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: inline;
+  float: left;
+}
+
+.stop-prediction {
+  display: inline;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stop-predictions-text {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.stop-prediction:after { 
+  content: ","; 
+}
+
+.stop-prediction:last-child:after { 
+  content: ""; 
 }
 
 @media only screen and (min-width: 35em) {
-  #page-container {
-    max-width: 1100px;
+  .page-container {
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
 }
+
+/*
+  Clearfix hack
+*/
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

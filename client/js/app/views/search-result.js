@@ -6,6 +6,8 @@ define(function (render) {
       Stop             = require('models/stop');
 
   return Backbone.View.extend({
+    tagName: 'li',
+    className: 'search-result-view',
     initialize: function () {
       this.template = _.template(tpl);
     },

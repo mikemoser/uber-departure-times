@@ -7,7 +7,7 @@ var schema = new mongoose.Schema({
   location: [],
   direction: String,
 
-  // To keep the model abstract and open to add stops from 
+  // To keep the model clean/abstract and open to add stops from 
   // other providers (e.g. BART) the specific provider data
   // (e.g. Nextbus agengyTag, routeTag, stopTag) as stored
   // the the provider data.
