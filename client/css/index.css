@@ -16,6 +16,10 @@ body {
   -webkit-border-radius: 4px;
 }
 
+.center {
+  text-align: center;
+}
+
 h1 {
   font-size: 80px;
   margin: 0;
@@ -30,9 +34,7 @@ h2 {
 }
 
 .message {
-  padding: 10px;
   text-align: center;  
-  text-transform: uppercase;
 }
 
 .page-container {
@@ -61,11 +63,17 @@ h2 {
 /*
   Loading
 */
-
+.loading-message {
+  padding: 10px;
+}
 
 /*
   Location
 */
+
+.location-view {
+  padding: 10px;
+}
 
 .location-icon {
   color: green;
@@ -110,7 +118,6 @@ h2 {
 
 .stop-view {
   padding: 10px;
-  margin-bottom: 10px;
   border-bottom: 1px solid #CCC;
 }
 
@@ -139,6 +146,12 @@ h2 {
   display: inline;
   font-size: 16px;
   font-weight: bold;
+}
+
+.stop-predictions-label {
+  margin-right: 5px;
+  font-size: 16px;
+  float: left;
 }
 
 .stop-predictions-text {

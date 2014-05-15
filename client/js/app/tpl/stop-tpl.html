@@ -5,6 +5,9 @@
 </div>
 <div class="stop-predictions-container clearfix">
   <% if (predictions.length) { %>
+    <span class="stop-predictions-label">
+      Arrives in:
+    </span>
     <ul class="stop-predictions">
       <% _.each(predictions, function (prediction) { %>
         <li class="stop-prediction"><%- prediction %></li>

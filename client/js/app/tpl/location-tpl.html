@@ -1,6 +1,9 @@
 <% if (error) { %>
   <div class="message">
-    Bummer.  We could not find your location and we need access for our service to work. Can you check your settings and make sure we have permission?
+    <p>Bummer.</p>
+    <p>We could not find your location and need access to give you nearby bus information.</p>
+    <p>Check your settings and make sure we have permission?</p>
+    <a href="https://support.google.com/chrome/answer/142065?hl=en">Chrome Help</a>
   </div>
 <% } else if (!location) { %>
   <div class="message">Requesting your location...</div>
