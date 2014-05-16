@@ -2,6 +2,10 @@
   "name": "departure-times",
   "author": "Mike Moser",
   "version": "0.0.1",
+  "main": "web.js",
+  "engines": {
+    "node": "0.10.x"
+  },
   "dependencies": {
     "express": "^4.2.0",
     "konfig": "^0.1.1",
