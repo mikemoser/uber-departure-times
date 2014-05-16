@@ -1,7 +1,7 @@
 {
   "default": {
     "port": 3000,
-    "db": "mongodb://127.0.0.1:27017/uber-departure",
+    "db": "mongodb://127.0.0.1:27017/uber-departure-times",
     "maxDistance" : 0.01,
     "search": {
       "limit": 5
@@ -9,6 +9,10 @@
   },
   
   "test": {
-    "db": "mongodb://127.0.0.1:27017/uber-departure-test"
+    "db": "mongodb://127.0.0.1:27017/uber-departure-times-test"
+  },
+
+  "production": {
+    "db": "mongodb://web:uber@oceanic.mongohq.com:10055/app25273437"
   }
 }
