@@ -4,6 +4,7 @@ var config      = require('./server/config/env'),
     express     = require('express'),
     app         = express(),
     mongoose    = require('mongoose'),
+    favicon     = require('serve-favicon'),
     Controllers = require('./server/controllers');
 
 // Connect to MongoDb
@@ -19,7 +20,7 @@ app.use('/fonts', express.static(__dirname + '/client/fonts'));
 app.use('/img', express.static(__dirname + '/client/img'));
 app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
-
+app.use(favicon(__dirname + '/client/img/favicon.ico'))
 
 // API Routes
 app.get('/api/search', Controllers.Search.search)
