@@ -6,8 +6,8 @@
 
 body {
   background-color: #EEE;
-  text-shadow: 1px 1px 1px #FFF;
   color: #555;
+  font-family: "ff-clan-web-pro-wide", sans-serif;
 }
 
 .round {
@@ -21,24 +21,28 @@ body {
 }
 
 h1 {
-  font-size: 80px;
+  font-size: 50px;
   margin: 0;
   padding: 0;
+  text-shadow: 1px 1px 1px #FFF;
 }
 
 h2 {
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px #FFF;
 }
 
 .message {
   text-align: center;  
+  text-shadow: 1px 1px 1px #FFF;
+  text-transform: uppercase;
 }
 
 .page-container {
-  margin: 30px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
 }
 
 .header {
@@ -48,14 +52,10 @@ h2 {
 .title {
   font-weight: bold;
   text-align: center;
-  font-style: italic;
   text-shadow: 1px 1px 1px #FFF;
-  font-family: 'times';
-  line-height: 80px;
 }
 
 .sub-title {
-  margin-top: 5px;
   text-shadow: 1px 1px 1px #FFF;
   font-weight: normal;
 }
@@ -63,8 +63,19 @@ h2 {
 /*
   Loading
 */
+
 .loading-message {
+  margin-top: 20px;
   padding: 10px;
+}
+
+
+/*
+  Home View
+*/
+
+.home-view {
+  margin-top: 20px;
 }
 
 /*
@@ -77,6 +88,27 @@ h2 {
 
 .location-icon {
   color: green;
+}
+
+/*
+  Uber View
+*/
+
+.uber-container {
+  background-color: #000;
+  color: #FFF;
+  padding: 10px;
+  margin-bottom: 10px;   
+  border: 1px solid #CCC;
+}
+
+.uber-message {
+  font-size: 18px;
+  line-height: 34px;
+}
+
+.uber-button {
+  float: right;
 }
 
 /*
@@ -168,10 +200,16 @@ h2 {
 }
 
 @media only screen and (min-width: 35em) {
+
+  h1 {
+    font-size: 80px;
+  }
+
   .page-container {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
   }
 }
 

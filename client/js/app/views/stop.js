@@ -1,6 +1,5 @@
-define(function (render) {
-
-  var Backbone  = require('backbone')
+define(function (require) {
+  var Backbone  = require('backbone'),
       tpl       = require('text!tpl/stop-tpl.html');
 
   return Backbone.View.extend({

@@ -3,19 +3,22 @@ define(function (require) {
   var Backbone        = require('backbone'),
       tpl             = require('text!tpl/home-tpl.html'),
       LocationView    = require('views/location'),
-      SearchView      = require('views/search');
+      SearchView      = require('views/search'),
+      UberView        = require('views/uber');
 
   return Backbone.View.extend({
     initialize: function () {
       this.template = _.template(tpl);
       this.locationView = new LocationView();
       this.searchView = new SearchView();
+      this.uberView = new UberView();
     },
     render: function () {
       this.$el.empty().html(this.template());
 
       this.assign({
         '.location-view': this.locationView,
+        '.uber-view': this.uberView,
         '.search-view': this.searchView
       });
 

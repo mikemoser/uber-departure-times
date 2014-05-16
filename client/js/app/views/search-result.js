@@ -1,4 +1,4 @@
-define(function (render) {
+define(function (require) {
 
   var Backbone         = require('backbone'),
       tpl              = require('text!tpl/search-result-tpl.html'),
