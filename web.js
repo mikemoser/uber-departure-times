@@ -26,6 +26,6 @@ app.get('/api/search', Controllers.Search.search)
 app.get('/api/stops/:id/predictions', Controllers.Stops.predictions)
 
 // Start web server
-var server = app.listen(config.app.port, function () {
+var server = app.listen(process.env.PORT || config.app.port, function () {
   console.log('Listening on port ' + config.app.port);
 });
