@@ -1,6 +1,7 @@
 'use strict'
 
-var Services = require('../../services');
+var Services = require('../../services'),
+    should   = require('should');
 
 describe('Search Service', function () {
   var longitude = -122.42531310000001,

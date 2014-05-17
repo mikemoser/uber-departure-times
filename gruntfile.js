@@ -45,9 +45,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['requirejs', 'express:dev','watch']);
-
   // Test task, set NODE_ENV for loading proper config
   grunt.registerTask('test', ['env:test', 'mochaTest']);
+
+  grunt.registerTask('default', ['requirejs', 'mochaTest', 'express:dev','watch']);
 
 };
