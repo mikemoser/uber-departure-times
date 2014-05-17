@@ -5,6 +5,8 @@ Departure Times by Mike Moser
 
 Live on Heroku @ [http://ubervs.herokuapp.com](http://ubervs.herokuapp.com)
 
+![uberVs screen shot](http://ubervs.herokuapp.com/img/screen-shot.png)
+
 Technology
 ---
 I went full stack and built a fully functional app using the following technologies:
