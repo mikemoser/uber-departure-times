@@ -34,12 +34,14 @@ Functionality
 - Doesn't consider accuracy of user location data
 - Doesn't show user's location on map (confidence/confirmation)
 - UI doesn't have smooth transitions on load
+- Need live polling to update predictions
 
 
 Architecture
 
 - Need better test coverage (very lacking) 
 - Denormalized model for search due to MongoDb limitations and search optimization
+- Ensure Backbone best practices (need peer review)
 - Crude data loading process for Nextbus data (would organize better)
 - Need to separate CSS files and then concat on build process
 - Use HTML5 Boilerplate & Modernizer
