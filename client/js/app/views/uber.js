@@ -25,10 +25,12 @@ define(function (require) {
       this.render();
     },
     requestUber: function () {
-      // HACK:  Quick and dirty way to launch app on mobile
-      // and just link to Uber's site on desktop.
+      // HACK:  Quick and dirty way to try and optimize for moblie.  Ideally would implement an
+      // intent workflow and launch the app automatically on iOS and Android (e.g. uber://),
+      // for now, we will just send the user to the moble version of uber's site that does
+      // some detection if the app is installed or allows them to sign up.
       if (screen.width < 480) 
-        window.location.href = 'uber://';
+        window.location.href = 'http://m.uber.com';
       else
         window.location.href = 'http://uber.com'
     }
