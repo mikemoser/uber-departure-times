@@ -20,7 +20,7 @@ I went full stack and built a fully functional app using the following technolog
 - **Node.js** - great for quickly building RESTful servers and allows one language (javascript) to be used on both the client and the server.
 
 
-- **MongoDb** - used for it's [geoNear](http://docs.mongodb.org/manual/reference/command/geoNear) command to easily find stops near the users location and it's BJSON format plays well with Node.js.
+- **MongoDb** - used for its [geoNear](http://docs.mongodb.org/manual/reference/command/geoNear) command to easily find stops near the users location and its BJSON format plays well with Node.js.
 
 
 Trade-offs & Todos
@@ -48,13 +48,13 @@ Architecture
 
 Known Issues / Assumptions
 
-- Some Nextbus stops don't have a direction data, need to investigate why (currently assuming "end of line".
+- Some Nextbus stops don't have direction data, need to investigate why (currently assuming "end of line").
 
 
 Setup & Configuration
 ---
 
-This setup assumes you have the following dependencies install: 
+This setup assumes you have the following dependencies installed: 
 
 - [Git](http://git-scm.com/book/en/Getting-Started-Installing-Git)
 - [Node.js](http://nodejs.org/)
