@@ -4,7 +4,7 @@ define(function (require) {
 
   return Backbone.Model.extend({
     defaults: {
-      predictions: []
+      predictions: null
     },
     initialize: function () {
       // TODO: Setup polling or count down

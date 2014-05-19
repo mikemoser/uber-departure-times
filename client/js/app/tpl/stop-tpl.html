@@ -4,16 +4,22 @@
   <span class="stop-distance">(<%- parseFloat(dist.calculated).toFixed(1) %> miles)</span>
 </div>
 <div class="stop-predictions-container clearfix">
-  <% if (predictions.length) { %>
+  <% if (predictions ===  null) { %>
+    <div class="fetching-predictions-message">Loading predictions...</div>
+  <% } else { %>
     <span class="stop-predictions-label">
       Arrives in:
     </span>
-    <ul class="stop-predictions">
-      <% _.each(predictions, function (prediction) { %>
-        <li class="stop-prediction"><%- prediction %></li>
-      <% }) %>
-    </ul>
-    <span class="stop-predictions-text">minutes</span>
+    <% if (predictions.length) { %>
+      <ul class="stop-predictions">
+        <% _.each(predictions, function (prediction) { %>
+          <li class="stop-prediction"><%- prediction %></li>
+        <% }) %>
+      </ul>
+      <span class="stop-predictions-text">minutes</span>
+    <% } else { %>
+      <div class="no-predictions-message">No current predictions</div>
+    <% } %>
   <% } %>
 </div>
 

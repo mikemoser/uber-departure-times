@@ -29,6 +29,7 @@ Trade-offs & Todos
 Functionality 
 
 - Only supports MUNI (e.g SF users)
+- Does not filter inactive routes (so downtown shows a lot of routes w/o predictions)
 - Uber estimates are mocked, "Request Uber" links to site, doesn't launch app
 - Ux dead end if location not found/allowed (should allow manual selection)
 - Doesn't consider accuracy of user location data

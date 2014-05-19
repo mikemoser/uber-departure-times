@@ -17,11 +17,12 @@ module.exports.getPredictions = function (stop, direction) {
   return serviceUtil.requestXmlToJson(url)
   .then(function (response) {
     response.body.predictions.forEach(function (prediction) {
-      prediction.direction[0].prediction.forEach(function (prediction) {
-        predictions.push(prediction.$.minutes)
-      });
+      if (prediction.direction) {
+        prediction.direction[0].prediction.forEach(function (prediction) {
+          predictions.push(prediction.$.minutes)
+        });
+      }
     });
-
     return predictions;
   })
 }
