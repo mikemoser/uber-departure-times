@@ -50,7 +50,7 @@ Known Issues / Assumptions
 
 - Some Nextbus stops don't have direction data, need to investigate why (currently assuming "end of line").
 - Many stops don't have predictions, they may be inactive (need to check predictions server-side and filter list)
-
+- Some Nextbus stops don't have a direction (assuming "End of line").  Showing in UI depending on user location, need to reasearch more.
 
 Setup & Configuration
 ---
