@@ -83,23 +83,25 @@ function getStops(route) {
     result.body.route[0].stop.forEach(function (stop) {
       var direction = directionHash[stop.$.tag];
 
-      // Map to Stop Model 
-      stops.push({
-        name: stop.$.title,
-        location: [parseFloat(stop.$.lon), parseFloat(stop.$.lat)],
-        direction: direction ? direction : 'End of line',  // TODO: Need to research why some stop do not have a direction, seem to be last stop, so perhaps end of the line
-        
-        //Denormalized for search optimization
-        routeName: route.title,
+      if (direction) { // TODO: Need to research why some stop do not have a direction, seem to be last stop, so perhaps end of the line
+        // Map to Stop Model 
+        stops.push({
+          name: stop.$.title,
+          location: [parseFloat(stop.$.lon), parseFloat(stop.$.lat)],
+          direction: direction,  
+          
+          //Denormalized for search optimization
+          routeName: route.title,
 
-        // Provider specific data so the base Stop model can be abstract
-        provider: 'nextbus',
-        providerData: {
-          agencyTag: route.agencyTag,
-          routeTag: route.tag,
-          stopTag: stop.$.tag,
-        }
-      })
+          // Provider specific data so the base Stop model can be abstract
+          provider: 'nextbus',
+          providerData: {
+            agencyTag: route.agencyTag,
+            routeTag: route.tag,
+            stopTag: stop.$.tag,
+          }
+        })
+      }
     });
 
     return stops;
