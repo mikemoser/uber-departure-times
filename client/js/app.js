@@ -21,7 +21,7 @@ require.config({
   }
 });
 
-require(['jquery', 'backbone', 'bootstrap', 'app/router', 'services/location'], function ($, Backbone, bootstrap, Router, locationService) {
+require(['backbone', 'app/router', 'services/location'], function (Backbone, Router, locationService) {
   var router = new Router();
   Backbone.history.start();
 

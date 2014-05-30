@@ -2,7 +2,7 @@
   "default": {
     "port": 3000,
     "db": "mongodb://127.0.0.1:27017/uber-departure-times",
-    "maxDistance" : 0.01,
+    "maxDistance" : 0.01, // 1 mile
     "search": {
       "limit": 5
     }

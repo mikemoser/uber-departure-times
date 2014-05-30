@@ -1,4 +1,4 @@
-'use strick'
+'use strict'
 
 var config      = require('./server/config/env'),
     express     = require('express'),

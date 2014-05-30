@@ -2,7 +2,7 @@
 
 var Services = require('../services')
 
-module.exports.predictions = function (req, res) {
+module.exports.predictions = function (req, res, next) {
   Services.Stops.getPredictions(req.params.id)
   .then(function (results) {
     res.json(results);  
