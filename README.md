@@ -102,5 +102,5 @@ Open /server/config/env/app.json and adjust values
 
 Links
 ---
-[my resume](https://drive.google.com/file/d/0BwJ5-4p6KtTyU2xwdWZ6eDJfNDg/edit?usp=sharing)
+[my resume](http://mikemoser.me)
 
